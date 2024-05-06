@@ -32,7 +32,7 @@ public class App
         //Checking for valid characters in local and domain part
         String validLocalChars = "!#$%&'*+/=?^_`{|}~-";
         String validDomainChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-.";
-        
+
         for (char ch : localPart.toCharArray()) {
             if (!Character.isLetterOrDigit(ch) && validLocalChars.indexOf(ch) == -1) {
                 return false;
