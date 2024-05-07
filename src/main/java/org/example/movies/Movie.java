@@ -5,9 +5,9 @@ public class Movie {
     private String cast;
     private String category;
     private String releaseDate;
-    private double budget;
+    private String budget;
 
-    public Movie(String title, String cast, String category, String releaseDate, double budget) {
+    public Movie(String title, String cast, String category, String releaseDate, String budget) {
         this.title = title;
         this.cast = cast;
         this.category = category;
@@ -31,7 +31,7 @@ public class Movie {
         return releaseDate;
     }
 
-    public double getBudget() {
+    public String getBudget() {
         return budget;
     }
 }

@@ -17,10 +17,31 @@ public class movielisterTest {
     }
 
     @Test
-    public void testUserReistration(){
+    public void testUserRegistration(){
         MovieListing movieListing = new MovieListing();
+
         assertTrue(movieListing.registerUser("hfasjfja@mail.com"));
         assertTrue(movieListing.registerUser("hfsdasjfja@mail.com"));
         assertFalse(movieListing.registerUser("hfasjfja@mail.com"));
+    }
+
+    @Test
+    public void testAddMovies(){
+        MovieListing movieListing = new MovieListing();
+
+        //title, cast, category, release date, budget.
+        movieListing.addMovies("Beder Meye Josna", "Iliyas Kanchon", "Romantic-Drama", "2-3-1993", "3cr");
+       // movieListing.addMovies("kacher manush dure thuiya", "Farin-Pritom", "Romantic-Realization", "1-1-2024", "50Lacs");
+
+        assertNotNull(movieListing.getMovieDetails("Beder Meye Josna"));
+    }
+
+    @Test
+    public void testSearchMovieByTitle(){
+        MovieListing movieListing =  new MovieListing();
+
+        assertNotNull(movieListing.searchByTitle("Beder Meye Josna"));
+        assertNotNull(movieListing.searchByTitle("Dhamal"));
+
     }
 }

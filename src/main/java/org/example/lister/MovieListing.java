@@ -1,8 +1,11 @@
 package org.example.lister;
 
 import org.example.movies.Movie;
+import org.example.primarymovies.MovieDatabase;
 import org.example.user.User;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 
@@ -14,6 +17,7 @@ public class MovieListing {
     public MovieListing(){
         this.movies = new HashMap<>();
         this.users = new HashMap<>();
+        MovieDatabase.initialize(this);
     }
 
     public boolean isValidEmail(String email) {
@@ -72,5 +76,31 @@ public class MovieListing {
         return false;
     }
 
+    //adding movies
+    public boolean addMovies(String title, String cast, String category, String date, String budget) {
+        movies.put(title, new Movie(title, cast, category,date, budget));
+
+        return true;
+    }
+
+    //getting the desired movie details
+    public Movie getMovieDetails(String title) {
+        if(movies.get((title)) == null)
+            return null;
+
+        return movies.get(title);
+    }
+
+    //search movies by title
+    public ArrayList<Movie> searchByTitle(String title) {
+        ArrayList<Movie> movieArrayList = new ArrayList<>();
+
+        for(Movie movie : movies.values()){
+            if(movie.getTitle().toLowerCase().contains(title.toLowerCase()))
+                movieArrayList.add(movie);
+        }
+
+        return movieArrayList;
+    }
 
 }

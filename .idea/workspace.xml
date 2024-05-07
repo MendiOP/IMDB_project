@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5a83e537-96fe-4ad3-b82b-69d4e2a4b022" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/movielisterTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/primarymovies/MovieDatabase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lister/MovieListing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/lister/MovieListing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/movies/Movie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/movies/Movie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/movielisterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/movielisterTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,12 +126,20 @@
       <option name="project" value="LOCAL" />
       <updated>1715015122231</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="written tests for validating email and register user and their corresponding solutions">
+      <created>1715108388904</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1715108388904</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="testing if unit test is working or not" />
     <MESSAGE value="Added User and Movie class for future use" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added User and Movie class for future use" />
+    <MESSAGE value="written tests for validating email and register user and their corresponding solutions" />
+    <option name="LAST_COMMIT_MESSAGE" value="written tests for validating email and register user and their corresponding solutions" />
   </component>
 </project>
