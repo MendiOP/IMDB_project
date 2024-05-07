@@ -75,4 +75,28 @@ public class movielisterTest {
         assertArrayEquals(new String[]{"Beder Meye Josna", "kacher manush dure thuiya", "Monpura", "Rajkumar"}, title);
 
     }
+
+    @Test
+    public void testAddToFavourite(){
+        MovieListing movieListing = new MovieListing();
+        assertFalse(movieListing.isValidEmail("@test@gmail.com"));
+        assertFalse(movieListing.addToFavourite("@test@gmail.com", "Rajkumar"));
+    }
+
+    @Test
+    public void testRemoveFromFavourite(){
+        MovieListing movieListing = new MovieListing();
+
+        movieListing.registerUser("test@gmail.com");
+        movieListing.addMovies("Fana", "Amir", "Drama", "1-1-10", "2cr");
+        movieListing.addMovies("ABCD", "Jackson", "Drama", "1-1-10", "2cr");
+        movieListing.addMovies("Dhaka Attack", "Shuvo", "Drama", "1-1-10", "2cr");
+
+        movieListing.addToFavourite("test@gmail.com", "ABCD");
+        movieListing.addToFavourite("test@gmail.com", "Fana");
+        movieListing.addToFavourite("sfaf.com", "sdfaf");
+
+        assertTrue(movieListing.removeFromFavorite("test@gmail.com", "ABCD"));
+        assertFalse(movieListing.removeFromFavorite("sfaf.com", "sdfaf"));
+    }
 }

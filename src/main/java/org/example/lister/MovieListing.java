@@ -125,5 +125,22 @@ public class MovieListing {
     }
 
     //add movies to favourite
-    
+    public boolean addToFavourite(String userEmail, String movieTitle) {
+        if(!isValidEmail(userEmail) || !users.containsKey(userEmail))
+            return false;
+
+        users.get(userEmail).addFavorite(movieTitle);
+
+        return true;
+    }
+
+
+    public boolean removeFromFavorite(String userMail, String movieTitle) {
+        if(!isValidEmail(userMail) || !users.containsKey(userMail))
+            return false;
+
+        users.get(userMail).removeFavorite(movieTitle);
+
+        return true;
+    }
 }
