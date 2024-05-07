@@ -4,10 +4,7 @@ import org.example.movies.Movie;
 import org.example.primarymovies.MovieDatabase;
 import org.example.user.User;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.*;
 
 public class MovieListing {
 
@@ -15,8 +12,8 @@ public class MovieListing {
     private HashMap<String, Movie> movies;
 
     public MovieListing(){
-        this.movies = new HashMap<>();
-        this.users = new HashMap<>();
+        this.movies = new LinkedHashMap<>();
+        this.users = new LinkedHashMap<>();
         MovieDatabase.initialize(this);
     }
 
@@ -103,4 +100,30 @@ public class MovieListing {
         return movieArrayList;
     }
 
+    //search movies by cast name
+    public ArrayList<Movie> searchByCast(String cast) {
+        ArrayList<Movie> movieArrayList = new ArrayList<>();
+
+        for(Movie movie : movies.values()){
+            if(movie.getCast().toLowerCase().contains(cast.toLowerCase()))
+                movieArrayList.add(movie);
+        }
+
+        return movieArrayList;
+    }
+
+    //search movies by their category
+    public ArrayList<Movie> searchByCategory(String category) {
+        ArrayList<Movie> movieArrayList = new ArrayList<>();
+
+        for(Movie movie : movies.values()){
+            if(movie.getCategory().toLowerCase().contains(category.toLowerCase()))
+                movieArrayList.add(movie);
+        }
+
+        return movieArrayList;
+    }
+
+    //add movies to favourite
+    
 }

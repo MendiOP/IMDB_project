@@ -1,7 +1,11 @@
 package org.example;
 
 import org.example.lister.MovieListing;
+import org.example.movies.Movie;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class movielisterTest {
@@ -42,6 +46,33 @@ public class movielisterTest {
 
         assertNotNull(movieListing.searchByTitle("Beder Meye Josna"));
         assertNotNull(movieListing.searchByTitle("Dhamal"));
+
+    }
+
+    @Test
+    public void testSearchByCast(){
+        MovieListing movieListing = new MovieListing();
+
+        ArrayList<Movie> movies = movieListing.searchByCast("Maruf Hayat");
+        String[] title = new String[movies.size()];
+        int i=0;
+        for(Movie movie : movies)
+            title[i++] = movie.getTitle();
+
+        assertArrayEquals(new String[]{"Green Card", "Omanush"}, title);
+    }
+
+    @Test
+    public void testSearchByCategory(){
+        MovieListing movieListing = new MovieListing();
+
+        ArrayList<Movie> movies = movieListing.searchByCategory("Romantic");
+        String[] title = new String[movies.size()];
+        int i=0;
+        for(Movie movie : movies)
+            title[i++] = movie.getTitle();
+
+        assertArrayEquals(new String[]{"Beder Meye Josna", "kacher manush dure thuiya", "Monpura", "Rajkumar"}, title);
 
     }
 }
