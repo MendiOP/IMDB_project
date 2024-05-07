@@ -5,7 +5,7 @@ import java.util.Set;
 
 public class User {
     private String email;
-    private Set<String> favorites;
+    private HashSet<String> favorites;
 
     public User(String email) {
         this.email = email;
@@ -16,7 +16,7 @@ public class User {
         return email;
     }
 
-    public Set<String> getFavorites() {
+    public HashSet<String> getFavorites() {
         return favorites;
     }
 

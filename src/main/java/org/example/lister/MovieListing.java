@@ -134,7 +134,7 @@ public class MovieListing {
         return true;
     }
 
-
+    //removing favorite movies
     public boolean removeFromFavorite(String userMail, String movieTitle) {
         if(!isValidEmail(userMail) || !users.containsKey(userMail))
             return false;
@@ -142,5 +142,45 @@ public class MovieListing {
         users.get(userMail).removeFavorite(movieTitle);
 
         return true;
+    }
+
+    //watching the list of favourite movies
+    public ArrayList<Movie> viewFavouriteMovies(String userMail) {
+        if(!isValidEmail(userMail) || !users.containsKey(userMail))
+            return null;
+
+        HashSet<String> favouriteMovies = users.get(userMail).getFavorites();
+
+        ArrayList<Movie> listOfFavourite = new ArrayList<>();
+        for(String movie : favouriteMovies){
+            listOfFavourite.add(movies.get(movie));
+        }
+
+        return listOfFavourite;
+    }
+
+
+    public ArrayList<Movie> searchOnlyFavouriteMovies(String userMail, String movieTitle) {
+        if(!isValidEmail(userMail) || !users.containsKey(userMail))
+            return null;
+
+        ArrayList<Movie> favouriteMovies = viewFavouriteMovies(userMail);
+        ArrayList<Movie> resultOfSearch = new ArrayList<>();
+        if(favouriteMovies == null)
+            return null;
+
+        for(Movie movie : favouriteMovies){
+            if(movie.getTitle().toLowerCase().contains(movieTitle.toLowerCase()))
+                resultOfSearch.add(movie);
+        }
+
+        return resultOfSearch;
+    }
+
+    public User getUserDetails(String email) {
+        if(!isValidEmail(email))
+            return null;
+
+        return users.get(email);
     }
 }

@@ -5,6 +5,7 @@ import org.example.movies.Movie;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -98,5 +99,57 @@ public class movielisterTest {
 
         assertTrue(movieListing.removeFromFavorite("test@gmail.com", "ABCD"));
         assertFalse(movieListing.removeFromFavorite("sfaf.com", "sdfaf"));
+    }
+
+    @Test
+    public void testViewFavouriteMovies(){
+        MovieListing movieListing = new MovieListing();
+
+        movieListing.registerUser("test@gmail.com");
+        movieListing.addMovies("Fana", "Amir", "Drama", "1-1-10", "2cr");
+        movieListing.addMovies("ABCD", "Jackson", "Drama", "1-1-10", "2cr");
+        movieListing.addMovies("Dhaka Attack", "Shuvo", "Drama", "1-1-10", "2cr");
+
+        movieListing.addToFavourite("test@gmail.com", "ABCD");
+        movieListing.addToFavourite("test@gmail.com", "Fana");
+        movieListing.addToFavourite("sfaf.com", "sdfaf");
+
+        ArrayList<Movie> movies = movieListing.viewFavouriteMovies("test@gmail.com");
+        String[] name = new String[movies.size()];
+        int i=0;
+        for(Movie movie : movies)
+            name[i++] = movie.getTitle();
+
+        assertArrayEquals(new String[]{"ABCD", "Fana"}, name);
+    }
+
+    @Test
+    public void testSearchOnlyFavouriteMovies(){
+        MovieListing movieListing = new MovieListing();
+
+        movieListing.registerUser("test@gmail.com");
+
+        movieListing.addMovies("ABCD", "Jackson", "Drama", "1-1-10", "2cr");
+        movieListing.addMovies("Dhaka Attack", "Shuvo", "Drama", "1-1-10", "2cr");
+        movieListing.addMovies("Roktim Full", "Jackson", "Drama", "1-1-10", "2cr");
+
+
+        movieListing.addToFavourite("test@gmail.com", "ABCD");
+        movieListing.addToFavourite("test@gmail.com", "Roktim Full");
+
+        ArrayList<Movie> listOfFavourite =  movieListing.searchOnlyFavouriteMovies("test@gmail.com", "Roktim");
+        String[] name = new String[listOfFavourite.size()];
+        int i=0;
+        for(Movie movie : listOfFavourite)
+            name[i++] = movie.getTitle();
+
+        assertArrayEquals(new String[]{"Roktim Full"}, name);
+
+    }
+
+    @Test void testGetPersonalDetails(){
+        MovieListing app = new MovieListing();
+        app.registerUser("test@example.com");
+        assertNotNull(app.getUserDetails("test@example.com"));
     }
 }
