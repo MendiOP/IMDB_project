@@ -34,4 +34,9 @@ public class Movie {
     public String getBudget() {
         return budget;
     }
+
+    @Override
+    public String toString() {
+        return "Title: " + title + ", Cast: " + cast + ", Category: " + category + ", Release Date: " + releaseDate + ", Budget: " + budget;
+    }
 }

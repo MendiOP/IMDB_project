@@ -97,6 +97,8 @@ public class MovieListing {
                 movieArrayList.add(movie);
         }
 
+        movieArrayList.sort((m1, m2) -> m1.getTitle().compareToIgnoreCase(m2.getTitle()));
+
         return movieArrayList;
     }
 
@@ -108,6 +110,8 @@ public class MovieListing {
             if(movie.getCast().toLowerCase().contains(cast.toLowerCase()))
                 movieArrayList.add(movie);
         }
+
+        movieArrayList.sort((m1, m2) -> m1.getTitle().compareToIgnoreCase(m2.getTitle()));
 
         return movieArrayList;
     }
@@ -121,12 +125,14 @@ public class MovieListing {
                 movieArrayList.add(movie);
         }
 
+        movieArrayList.sort((m1, m2) -> m1.getTitle().compareToIgnoreCase(m2.getTitle()));
+
         return movieArrayList;
     }
 
     //add movies to favourite
     public boolean addToFavourite(String userEmail, String movieTitle) {
-        if(!isValidEmail(userEmail) || !users.containsKey(userEmail))
+        if(!isValidEmail(userEmail) || !users.containsKey(userEmail) || !movies.containsKey(movieTitle))
             return false;
 
         users.get(userEmail).addFavorite(movieTitle);
